@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TabHost;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,24 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        TabHost tabHost=(TabHost)findViewById(R.id.tabHost);
+        tabHost.setup();
+
+        TabHost.TabSpec spec1=tabHost.newTabSpec("Tab 1");
+        spec1.setContent(R.id.tab1);
+        spec1.setIndicator("Tab 1");
+
+        TabHost.TabSpec spec2=tabHost.newTabSpec("Tab 2");
+        spec2.setIndicator("Tab 2");
+        spec2.setContent(R.id.tab2);
+
+        TabHost.TabSpec spec3=tabHost.newTabSpec("Tab 3");
+        spec3.setIndicator("Tab 3");
+        spec3.setContent(R.id.tab3);
+
+        tabHost.addTab(spec1);
+        tabHost.addTab(spec2);
+        tabHost.addTab(spec3);
     }
 
     @Override
