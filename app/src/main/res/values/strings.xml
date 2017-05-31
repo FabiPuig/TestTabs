@@ -15,4 +15,9 @@
     <string name="tv_third_fragment">Third fragment</string>
     <string name="tv_fourth_fragment">Fourth fragment</string>
 
+    <string name="bt_first_fragment">Button first</string>
+    <string name="bt_second_fragment">Button second</string>
+    <string name="bt_third_fragment">Button third</string>
+    <string name="bt_fourth_fragment">Button fourth</string>
+
 </resources>
