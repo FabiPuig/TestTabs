@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TabHost tabHost;
+    private FragmentTabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,33 +28,28 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        tabHost=(TabHost)findViewById(R.id.tabHost);
-        tabHost.setup();
+        tabHost=(FragmentTabHost) findViewById(R.id.tabHost);
+        tabHost.setup( this, getSupportFragmentManager(), android.R.id.tabcontent );
 
         View tabview1 = createTabView( tabHost.getContext(), "10", "Tab 1");
         TabHost.TabSpec spec1= tabHost.newTabSpec("Tab 1");
         spec1.setIndicator( tabview1 );
-        spec1.setContent(R.id.tab1);
+        tabHost.addTab( spec1, FirstFragment.class, null);
 
         View tabview2 = createTabView( tabHost.getContext(), "20", "Tab 2");
         TabHost.TabSpec spec2=tabHost.newTabSpec("Tab 2");
         spec2.setIndicator( tabview2 );
-        spec2.setContent(R.id.tab2);
+        tabHost.addTab( spec2, SecondFragment.class, null);
 
         View tabview3 = createTabView( tabHost.getContext(), "30", "Tab 3");
         TabHost.TabSpec spec3=tabHost.newTabSpec("Tab 3");
         spec3.setIndicator( tabview3 );
-        spec3.setContent(R.id.tab3);
+        tabHost.addTab( spec3, ThirdFragment.class, null);
 
         View tabview4 = createTabView( tabHost.getContext(), "40", "Tab 4");
         TabHost.TabSpec spec4=tabHost.newTabSpec("Tab 4");
         spec4.setIndicator( tabview4 );
-        spec4.setContent(R.id.tab4);
-
-        tabHost.addTab(spec1);
-        tabHost.addTab(spec2);
-        tabHost.addTab(spec3);
-        tabHost.addTab(spec4);
+        tabHost.addTab( spec4, FourthFragment.class, null);
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
