@@ -5,5 +5,9 @@
     <string name="tv_tab_1">TextView 1</string>
     <string name="tv_tab_2">TextView 2</string>
     <string name="tv_tab_3">TextView 3</string>
+    <string name="tv_tab_4">TextView 4</string>
+
+    <string name="tv_1_linear_default">tv1</string>
+    <string name="tv_2_linear_default">tv2</string>
 
 </resources>
