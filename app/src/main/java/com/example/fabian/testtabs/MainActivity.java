@@ -1,9 +1,11 @@
 package com.example.fabian.testtabs;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
@@ -52,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(spec2);
         tabHost.addTab(spec3);
         tabHost.addTab(spec4);
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                formatTabHost();
+            }
+        });
     }
 
     @Override
@@ -94,5 +103,33 @@ public class MainActivity extends AppCompatActivity {
         tv2.setText( text2 );
 
         return view;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //detecta el tab seleccionado por defecto para darle el formato deseado
+        formatTabHost();
+    }
+
+    /** Cambio de color en los titulos del tabhost en funcion de si estan seleccionados o no
+     *  Tambien elimina la negrita y cambia el tamaño de letra
+     */
+    private void formatTabHost(){
+
+        for(int i=0;i<tabHost.getTabWidget().getChildCount();i++)
+        {
+            TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById( R.id.tabsTv1 );
+            TextView tv2 = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById( R.id.tabsTv2 );
+
+            //pone color a los tabs dependiendo si esta seleccionado o no
+            if( i == tabHost.getCurrentTab() ){
+                tv.setTextColor( ContextCompat.getColor( getApplicationContext(), R.color.th_text_selected));
+                tv2.setTextColor( ContextCompat.getColor( getApplicationContext(), R.color.th_text_selected));
+            }else{
+                tv.setTextColor( ContextCompat.getColor( getApplicationContext(), R.color.th_text_unselected));
+                tv2.setTextColor( ContextCompat.getColor( getApplicationContext(), R.color.th_text_unselected));
+            }
+        }
     }
 }

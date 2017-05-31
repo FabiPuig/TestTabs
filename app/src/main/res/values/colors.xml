@@ -5,5 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="linear_background">#7C7CFF</color>
+    <color name="th_text_selected">#FFFFFF</color>
+    <color name="th_text_unselected">#000000</color>
 
 </resources>
