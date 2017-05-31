@@ -10,4 +10,9 @@
     <string name="tv_1_linear_default">tv1</string>
     <string name="tv_2_linear_default">tv2</string>
 
+    <string name="tv_first_fragment">First fragment</string>
+    <string name="tv_second_fragment">Second fragment</string>
+    <string name="tv_third_fragment">Third fragment</string>
+    <string name="tv_fourth_fragment">Fourth fragment</string>
+
 </resources>
