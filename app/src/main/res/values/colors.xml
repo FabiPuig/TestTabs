@@ -8,4 +8,6 @@
     <color name="th_text_selected">#FFFFFF</color>
     <color name="th_text_unselected">#000000</color>
 
+    <color name="th_divider">#FFFFFF</color>
+
 </resources>

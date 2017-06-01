@@ -14,7 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
+import android.widget.TabWidget;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,15 +33,19 @@ public class MainActivity extends AppCompatActivity {
 
         tabHost=(FragmentTabHost) findViewById(R.id.tabHost);
         tabHost.setup( this, getSupportFragmentManager(), android.R.id.tabcontent );
+        //tabHost.getTabWidget().setShowDividers( TabWidget.SHOW_DIVIDER_MIDDLE );
+        tabHost.getTabWidget().setDividerDrawable( R.drawable.tab_div );
 
         View tabview1 = createTabView( tabHost.getContext(), "10", "Tab 1");
         TabHost.TabSpec spec1= tabHost.newTabSpec("Tab 1");
         spec1.setIndicator( tabview1 );
+        //spec1.setIndicator("TAB 01");
         tabHost.addTab( spec1, FirstFragment.class, null);
 
         View tabview2 = createTabView( tabHost.getContext(), "20", "Tab 2");
         TabHost.TabSpec spec2=tabHost.newTabSpec("Tab 2");
         spec2.setIndicator( tabview2 );
+        //spec2.setIndicator( "TAB 02");
         tabHost.addTab( spec2, SecondFragment.class, null);
 
         View tabview3 = createTabView( tabHost.getContext(), "30", "Tab 3");
@@ -113,8 +120,11 @@ public class MainActivity extends AppCompatActivity {
      */
     private void formatTabHost(){
 
+        View v;
+
         for(int i=0;i<tabHost.getTabWidget().getChildCount();i++)
         {
+
             TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById( R.id.tabsTv1 );
             TextView tv2 = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById( R.id.tabsTv2 );
 
